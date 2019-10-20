@@ -10,3 +10,19 @@
 .animal {
     margin: 5px;
 }
+body {
+    background: url(../images/circle-blues.png);
+}
+label {
+    color: white;
+}
+.container {
+    border-radius: 25px;
+    background: url(../images/dark-honeycomb.png);
+    min-height: 640px;
+    margin-top: 20px;
+
+}
+p{
+    color: white;
+}
