@@ -1,0 +1,12 @@
+#search {
+    float: right;
+}
+#newGif{
+    float: left;
+}
+#top {
+    margin-top: 40px;
+}
+.animal {
+    margin: 5px;
+}
