@@ -1,7 +1,7 @@
 
 
 
-var animalList = ["dog", "cat", "panda", "tiger", "parrot"];
+var animalList = ["steve", "cat", "fail"];
 
 
 $(document).on("click", "button", function () {
@@ -13,7 +13,7 @@ $(document).on("click", "button", function () {
 
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + newAnimal + "&api_key=LifZNk6pBC7OUQu4CdOBMqmkqwRo5aIr&limit=10";
 
-    console.log(queryURL);
+    // console.log(queryURL);
 
     $.ajax({
         url: queryURL,
@@ -23,29 +23,36 @@ $(document).on("click", "button", function () {
         .then(function (res) {
 
 
-
             var results = res.data;
 
-            for (var i = 0; i < results.length; i++) {
-                if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
+            // console.log(results.length);
 
-                    var gifDiv = $("<div id='newGif'>");
+            if (results.length > 0) {
 
-                    var rating = results[i].rating;
+                for (var i = 0; i < results.length; i++) {
+                    if (results[i].rating !== "r") {
 
-                    var p = $("<p>").text("Rating: " + rating);
+                        var gifDiv = $("<div id='newGif'>");
 
-                    var animalImage = $("<img>");
+                        var rating = results[i].rating;
 
-                    animalImage.attr("src", results[i].images.fixed_height.url);
+                        var p = $("<p>").text("Rating: " + rating);
 
-                    gifDiv.append(p);
+                        var animalImage = $("<img>");
 
-                    gifDiv.append(animalImage);
+                        animalImage.attr("src", results[i].images.fixed_height.url);
 
-                    $("#gifs").prepend(gifDiv);
+                        gifDiv.append(p);
 
+                        gifDiv.append(animalImage);
+
+                        $("#gifs").prepend(gifDiv);
+
+                    }
                 }
+            } else {
+                $('#myModal').modal('toggle');
+
             }
         });
 
@@ -72,10 +79,7 @@ $("#btn").on("click", function (event) {
     var newAnimal = $("#gif").val().trim();
     animalList.push(newAnimal);
     renderButtons();
-    console.log(newAnimal);
+    // console.log(newAnimal);
 });
 
 renderButtons();
-
-
-
