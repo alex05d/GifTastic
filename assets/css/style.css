@@ -3,6 +3,7 @@
 }
 #newGif{
     float: left;
+    margin: 10px;
 }
 #top {
     margin-top: 40px;
